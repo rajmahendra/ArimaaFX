@@ -38,6 +38,12 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     
     <build>
@@ -60,5 +66,6 @@
     <modules>
         <module>core</module>
         <module>gui</module>
-    </modules>
+    <module>parser</module>
+  </modules>
 </project>

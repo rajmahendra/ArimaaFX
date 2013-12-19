@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Arimaa
+ * Copyright 2013 Arinaa
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,33 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.arimaa.core;
+package com.arimaa.api.movement;
 
-import com.arimaa.api.PieceType;
-import static com.arimaa.api.PieceType.RABBIT;
+import com.arimaa.core.Color;
 
 /**
  *
  * @author Rajmahendra Hegde <rajmahendra@gmail.com>
  */
-public enum Color {
+public enum Direction {
 
-    GOLD, SILVER, UNDEFINED;
+    HORIZONTAL_LEFT(-1, 0),
+    HORIZONTAL_RIGHT(1, 0),
+    VERTICAL_FORWARD(0, 1),
+    VERTICAL_BACKWARD(0, -1);
 
-    public Color opposite() {
-        if (this == UNDEFINED) {
-            return UNDEFINED;
-        }
-        return this == GOLD ? SILVER : GOLD;
+    int deltaX;
+    int deltaY;
+
+    private Direction(int deltaX, int deltaY) {
+        this.deltaX = deltaX;
+        this.deltaY = deltaY;
     }
-    
-    /*
-        public int getInitialRowFor(PieceType type) {
-		if (this== GOLD && type == RABBIT) return 2;
-		if (this==GOLD && type != RABBIT) return 1;
-		if (this==SILVER && type == RABBIT) return 7;
-		if (this==SILVER && type != RABBIT) return 8;
-		return -1;
-	}
-*/
+
+    public int getDeltaX() {
+        return deltaX;
+    }
+
+    public int getDeltaY(Color forColor) {
+        /*  if (forColor == Color.UNDEFINED) {
+         return 0;
+         }
+         return forColor == Color.GOLD ? deltaY : -deltaY;*/
+        return deltaY;
+    }
+
 }

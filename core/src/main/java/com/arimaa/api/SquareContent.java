@@ -13,13 +13,64 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.arimaa.api;
+
+import com.arimaa.core.Color;
+import com.arimaa.core.Piece;
+import com.arimaa.core.PieceNotFoundException;
 
 /**
  *
  * @author Rajmahendra Hegde <rajmahendra@gmail.com>
  */
 public interface SquareContent {
-    
+
+    public static final EmptySquare EMPTY_SQUARE = EmptySquare.INSTANCE;
+    public static final TrapSquare TRAP_SQUARE = TrapSquare.INSTANCE;
+
+    enum EmptySquare implements SquareContent {
+
+        INSTANCE;
+
+        @Override
+        public boolean isEmpty() {
+            return true;
+        }
+
+        @Override
+        public Color getContentColor() {
+            return Color.UNDEFINED;
+        }
+
+        @Override
+        public Piece asPiece() {
+            throw new PieceNotFoundException();
+        }
+    }
+
+    enum TrapSquare implements SquareContent {
+
+        INSTANCE;
+
+        @Override
+        public boolean isEmpty() {
+            return true;
+        }
+
+        @Override
+        public Color getContentColor() {
+            return Color.UNDEFINED;
+        }
+
+        @Override
+        public Piece asPiece() {
+            throw new PieceNotFoundException();
+        }
+    }
+
+    public boolean isEmpty();
+
+    public Color getContentColor();
+
+    public Piece asPiece();
 }

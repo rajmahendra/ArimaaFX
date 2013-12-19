@@ -13,33 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.arimaa.core;
+package com.arimaa.api.movement.type;
 
-import com.arimaa.api.PieceType;
-import static com.arimaa.api.PieceType.RABBIT;
+import com.arimaa.api.movement.Direction;
+import com.arimaa.core.ArimaaBoard;
+import com.arimaa.core.Color;
+import com.arimaa.core.Location;
+import com.arimaa.core.PieceOnLocation;
+import com.arimaa.api.movement.Movement;
 
 /**
  *
  * @author Rajmahendra Hegde <rajmahendra@gmail.com>
  */
-public enum Color {
+public interface MovementType {
 
-    GOLD, SILVER, UNDEFINED;
+    public Direction getDirection();
 
-    public Color opposite() {
-        if (this == UNDEFINED) {
-            return UNDEFINED;
-        }
-        return this == GOLD ? SILVER : GOLD;
-    }
-    
-    /*
-        public int getInitialRowFor(PieceType type) {
-		if (this== GOLD && type == RABBIT) return 2;
-		if (this==GOLD && type != RABBIT) return 1;
-		if (this==SILVER && type == RABBIT) return 7;
-		if (this==SILVER && type != RABBIT) return 8;
-		return -1;
-	}
-*/
+    public DevelopmentType getDevelopmentType();
+
+    public int getDeltaX();
+
+    public int getDeltaY(Color forColor);
+
+    public boolean isApplicable(PieceOnLocation pieceOnLocation, Location locationTo, ArimaaBoard board, Movement previousMovement);
+
 }

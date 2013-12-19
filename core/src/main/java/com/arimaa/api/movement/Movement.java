@@ -13,52 +13,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.arimaa.core;
+package com.arimaa.api.movement;
 
-import com.arimaa.api.PieceType;
+import com.arimaa.core.Color;
+import com.arimaa.core.Location;
+import com.arimaa.core.Piece;
+import com.arimaa.core.PieceOnLocation;
 
 /**
  *
  * @author Rajmahendra Hegde <rajmahendra@gmail.com>
  */
-public class PieceOnLocation {
+public class Movement {
 
     private final Piece piece;
-    private final Location location;
+    private final Location from;
+    private final Location to;
 
-    public PieceOnLocation(Piece piece, Location location) {
+    public Movement(Piece piece, Location from, Location to) {
         this.piece = piece;
-        this.location = location;
+        this.from = from;
+        this.to = to;
     }
 
-    public Piece getPiece() {
+    public Movement(PieceOnLocation pieceInBoard, Location locationTo) {
+        this(pieceInBoard.getPiece(), pieceInBoard.getLocation(), locationTo);
+    }
+
+    public Piece getMovingPiece() {
         return piece;
     }
 
-    public Location getLocation() {
-        return location;
+    public Location getFrom() {
+        return from;
     }
 
-    public Color getColor() {
-        return piece.getColor();
-    }
-
-    public PieceType getType() {
-        return piece.getType();
+    public Location getTo() {
+        return to;
     }
 
     @Override
     public String toString() {
-        return "PieceInBoard [location=" + location + ", piece=" + piece + "]";
+        return "Movement [from=" + from + ", piece=" + piece + ", to=" + to
+                + "]";
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result
-                + ((location == null) ? 0 : location.hashCode());
+        result = prime * result + ((from == null) ? 0 : from.hashCode());
         result = prime * result + ((piece == null) ? 0 : piece.hashCode());
+        result = prime * result + ((to == null) ? 0 : to.hashCode());
         return result;
     }
 
@@ -73,12 +79,12 @@ public class PieceOnLocation {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        PieceOnLocation other = (PieceOnLocation) obj;
-        if (location == null) {
-            if (other.location != null) {
+        Movement other = (Movement) obj;
+        if (from == null) {
+            if (other.from != null) {
                 return false;
             }
-        } else if (!location.equals(other.location)) {
+        } else if (!from.equals(other.from)) {
             return false;
         }
         if (piece == null) {
@@ -88,11 +94,17 @@ public class PieceOnLocation {
         } else if (!piece.equals(other.piece)) {
             return false;
         }
+        if (to == null) {
+            if (other.to != null) {
+                return false;
+            }
+        } else if (!to.equals(other.to)) {
+            return false;
+        }
         return true;
     }
-
-    public boolean isOnInitialRow() {
-        return getLocation().getCoordinateY() <= 2;
-    }
-
+/*
+    public Color getColor() {
+        return getMovingPiece().getColor();
+    }*/
 }
