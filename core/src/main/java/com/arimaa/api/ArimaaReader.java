@@ -13,13 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.arimaa.api;
+
+import com.arimaa.api.movement.MovementLines;
+import com.arimaa.core.ArimaaBoard;
+import com.arimaa.core.Color;
+import com.arimaa.core.Location;
+import com.arimaa.core.PieceOnLocation;
 
 /**
  *
  * @author Rajmahendra Hegde <rajmahendra@gmail.com>
  */
 public interface ArimaaReader {
-    
+
+    MovementLines findAllMovementLines(Location location);
+
+    boolean containsPieceWithColor(Location location, Color color, ArimaaBoard board);
+
+    MovementLines findMovementLines(PieceOnLocation pieceOnLocation);
 }

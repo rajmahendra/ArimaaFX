@@ -15,17 +15,66 @@
  */
 package com.arimaa.api;
 
+import com.arimaa.api.movement.type.BasicMovementType;
+import com.arimaa.api.movement.type.MovementType;
+import com.arimaa.core.Color;
+import com.arimaa.core.Piece;
+import java.util.List;
+import java.util.Arrays;
+
 /**
  *
  * @author Rajmahendra Hegde <rajmahendra@gmail.com>
  */
 public enum PieceType {
 
-    ELEPHANT(),
-    CAMEL(),
-    HORSE(),
-    DOG(),
-    CAT(),
-    RABBIT();
+    ELEPHANT(
+            BasicMovementType.LINEAL_LEFT_ONE_STEP,
+            BasicMovementType.LINEAL_RIGHT_ONE_STEP,
+            BasicMovementType.LINEAL_FORWARD_ONE_STEP,
+            BasicMovementType.LINEAL_BACKWARD_ONE_STEP
+    ),
+    CAMEL(
+            BasicMovementType.LINEAL_LEFT_ONE_STEP,
+            BasicMovementType.LINEAL_RIGHT_ONE_STEP,
+            BasicMovementType.LINEAL_FORWARD_ONE_STEP,
+            BasicMovementType.LINEAL_BACKWARD_ONE_STEP
+    ),
+    HORSE(
+            BasicMovementType.LINEAL_LEFT_ONE_STEP,
+            BasicMovementType.LINEAL_RIGHT_ONE_STEP,
+            BasicMovementType.LINEAL_FORWARD_ONE_STEP,
+            BasicMovementType.LINEAL_BACKWARD_ONE_STEP
+    ),
+    DOG(
+            BasicMovementType.LINEAL_LEFT_ONE_STEP,
+            BasicMovementType.LINEAL_RIGHT_ONE_STEP,
+            BasicMovementType.LINEAL_FORWARD_ONE_STEP,
+            BasicMovementType.LINEAL_BACKWARD_ONE_STEP
+    ),
+    CAT(
+            BasicMovementType.LINEAL_LEFT_ONE_STEP,
+            BasicMovementType.LINEAL_RIGHT_ONE_STEP,
+            BasicMovementType.LINEAL_FORWARD_ONE_STEP,
+            BasicMovementType.LINEAL_BACKWARD_ONE_STEP
+    ),
+    RABBIT(
+            BasicMovementType.LINEAL_LEFT_ONE_STEP,
+            BasicMovementType.LINEAL_RIGHT_ONE_STEP,
+            BasicMovementType.LINEAL_FORWARD_ONE_STEP
+    );
 
+    private final List<MovementType> availableMovementTypes;
+
+    private PieceType(MovementType... movementTypes) {
+        this.availableMovementTypes = Arrays.asList(movementTypes);
+    }
+
+    public Piece withColor(Color color) {
+        return Piece.with(this, color);
+    }
+
+    public List<MovementType> getMovementTypes() {
+        return availableMovementTypes;
+    }
 }

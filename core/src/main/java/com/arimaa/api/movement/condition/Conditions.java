@@ -13,21 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.arimaa.api;
-
-import com.arimaa.api.movement.Movement;
-import com.arimaa.core.ArimaaBoard;
-import com.arimaa.core.Location;
-import com.arimaa.core.PieceOnLocation;
-import java.util.List;
+package com.arimaa.api.movement.condition;
 
 /**
  *
  * @author Rajmahendra Hegde <rajmahendra@gmail.com>
  */
-public interface ArimaaAnaliser {
-    
-    //get pushable,pullable pieces. 
+public enum Conditions {
 
-    List<Location> findReachableLocations(PieceOnLocation pieceOnLocation, ArimaaBoard board, Movement previousMovement);
+    WHEN_FREAZE(new IsOnFreazeCondition()),
+    WHEN_REACH_GOAL_LINE(new IsOnGoalLineCondition()),
+    WHEN_PULL_A_PIECE(new IsOnPullingCondition()),
+    WHEN_PUSH_A_PIECE(new IsOnPushingCondition()),
+    WHEN_FALL_IN_TRAP(new IsOnTrapCondition());
+
+    private final Condition condition;
+
+    private Conditions(Condition condition) {
+        this.condition = condition;
+    }
+
+    public Condition getCondition() {
+        return condition;
+    }
 }
