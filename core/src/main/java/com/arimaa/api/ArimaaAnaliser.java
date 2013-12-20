@@ -17,6 +17,7 @@ package com.arimaa.api;
 
 import com.arimaa.api.movement.Movement;
 import com.arimaa.core.ArimaaBoard;
+import com.arimaa.core.Color;
 import com.arimaa.core.Location;
 import com.arimaa.core.PieceOnLocation;
 import java.util.List;
@@ -26,8 +27,15 @@ import java.util.List;
  * @author Rajmahendra Hegde <rajmahendra@gmail.com>
  */
 public interface ArimaaAnaliser {
-    
-    //get pushable,pullable pieces. 
 
-    List<Location> findReachableLocations(PieceOnLocation pieceOnLocation, ArimaaBoard board, Movement previousMovement);
+    //get pushable,pullable pieces. 
+    Movement findGoalMovement(ArimaaBoard board, Movement previousMovement, Color color);
+
+    boolean isInGoal(ArimaaBoard board, Color color);
+
+    boolean findFrozenPieces(ArimaaBoard board, Color color);
+
+    List<Location> findReachableLocations(ArimaaBoard board, PieceOnLocation pieceOnLocation, Movement previousMovement);
+
+    List<PieceOnLocation> findOpponentPiecesAt(ArimaaBoard board, Location location);
 }
