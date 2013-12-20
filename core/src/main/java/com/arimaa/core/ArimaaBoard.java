@@ -61,6 +61,12 @@ public class ArimaaBoard {
         return new ArimaaBoard(copy);
     }
 
+    public ArimaaBoard addPiece(PieceOnLocation pieceOnLocation) {
+        Squares copy = squares.copy();
+        copy.setContent(pieceOnLocation.getPiece(), pieceOnLocation.getLocation());
+        return new ArimaaBoard(copy);
+    }
+
     public List<PieceOnLocation> getPieces(Color movingColor) {
         List<PieceOnLocation> pieces = new ArrayList<>();
         for (Location location : Location.values()) {
