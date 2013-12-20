@@ -16,6 +16,8 @@
 package com.arimaa.core;
 
 import com.arimaa.api.SquareContent;
+import static com.arimaa.api.SquareContent.EMPTY_SQUARE;
+import static com.arimaa.api.SquareContent.TRAP_SQUARE;
 
 /**
  *
@@ -33,9 +35,14 @@ public class Squares {
         SquareContent[][] squareContents = new SquareContent[8][8];
         for (int i = 1; i <= 8; i++) {
             for (int j = 1; j <= 8; j++) {
-                squareContents[i - 1][j - 1] = SquareContent.EMPTY_SQUARE;
+                squareContents[i - 1][j - 1] = EMPTY_SQUARE;
             }
         }
+        squareContents[2][2] = TRAP_SQUARE;
+        squareContents[2][5] = TRAP_SQUARE;
+        squareContents[5][2] = TRAP_SQUARE;
+        squareContents[5][5] = TRAP_SQUARE;
+
         return squareContents;
     }
 
@@ -62,8 +69,16 @@ public class Squares {
         values[coordinateX - 1][coordinateY - 1] = piece;
     }
 
+    public void setContent(SquareContent piece, Location location) {
+        values[location.getCoordinateX() - 1][location.getCoordinateY() - 1] = piece;
+    }
+
     public SquareContent getContent(int coordinateX, int coordinateY) {
         return values[coordinateX - 1][coordinateY - 1];
+    }
+
+    public SquareContent getContent(Location location) {
+        return values[location.getCoordinateX() - 1][location.getCoordinateY() - 1];
     }
 
 }
