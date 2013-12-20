@@ -56,7 +56,13 @@ public class ArimaaBoardMovementTest {
         ArimaaBoard newArimaaBoard = arimaaBoard.performMovement(goldRabbitAtA1, A2);
 
         //Then
+        //In Main Board
+        assertEquals(arimaaBoard.getSquareContent(A2), EMPTY_SQUARE);
+        assertEquals(arimaaBoard.getSquareContent(A1), GOLD_RABBIT);
+
+        //In New Board
         assertEquals(newArimaaBoard.getSquareContent(A2), GOLD_RABBIT);
+        assertEquals(newArimaaBoard.getSquareContent(A1), EMPTY_SQUARE);
     }
 
 }

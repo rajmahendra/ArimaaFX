@@ -43,26 +43,26 @@ public enum BasicMovementType implements MovementType {
 
     @Override
     public Direction getDirection() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return flankLineType;
     }
 
     @Override
     public DevelopmentType getDevelopmentType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return developmentType;
     }
 
     @Override
     public int getDeltaX() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getDirection().getDeltaX();
     }
 
     @Override
     public int getDeltaY(Color forColor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getDirection().getDeltaY(forColor);
     }
 
     @Override
     public boolean isApplicable(PieceOnLocation pieceOnLocation, Location locationTo, ArimaaBoard board, Movement previousMovement) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 }

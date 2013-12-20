@@ -38,7 +38,7 @@ public class MovementLine {
     public MovementLine(Location startingLocation, List<Location> locations, MovementType movementType) {
         this.startingLocation = startingLocation;
         if (locations == null) {
-            this.locations = new ArrayList<Location>();
+            this.locations = new ArrayList<>();
         } else {
             this.locations = locations;
         }
@@ -58,7 +58,7 @@ public class MovementLine {
     }
 
     public List<Location> filterPotentiallyReachablePositions(Color color, ArimaaBoard board) {
-        List<Location> toReturn = new ArrayList<Location>();
+        List<Location> toReturn = new ArrayList<>();
         boolean isReachable = false;
         boolean isLastLocation = false;
 
@@ -91,7 +91,7 @@ public class MovementLine {
     }
 
     public boolean isApplicable(ArimaaBoard board, Movement previousMovement) {
-        if (locations.size() == 0) {
+        if (locations.isEmpty()) {
             return false;
         }
         Location locationTo = locations.get(0);

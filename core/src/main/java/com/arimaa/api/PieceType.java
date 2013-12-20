@@ -28,46 +28,48 @@ import java.util.Arrays;
  */
 public enum PieceType {
 
-    ELEPHANT(
+    ELEPHANT(5,
             BasicMovementType.LINEAL_LEFT_ONE_STEP,
             BasicMovementType.LINEAL_RIGHT_ONE_STEP,
             BasicMovementType.LINEAL_FORWARD_ONE_STEP,
             BasicMovementType.LINEAL_BACKWARD_ONE_STEP
     ),
-    CAMEL(
+    CAMEL(4,
             BasicMovementType.LINEAL_LEFT_ONE_STEP,
             BasicMovementType.LINEAL_RIGHT_ONE_STEP,
             BasicMovementType.LINEAL_FORWARD_ONE_STEP,
             BasicMovementType.LINEAL_BACKWARD_ONE_STEP
     ),
-    HORSE(
+    HORSE(3,
             BasicMovementType.LINEAL_LEFT_ONE_STEP,
             BasicMovementType.LINEAL_RIGHT_ONE_STEP,
             BasicMovementType.LINEAL_FORWARD_ONE_STEP,
             BasicMovementType.LINEAL_BACKWARD_ONE_STEP
     ),
-    DOG(
+    DOG(2,
             BasicMovementType.LINEAL_LEFT_ONE_STEP,
             BasicMovementType.LINEAL_RIGHT_ONE_STEP,
             BasicMovementType.LINEAL_FORWARD_ONE_STEP,
             BasicMovementType.LINEAL_BACKWARD_ONE_STEP
     ),
-    CAT(
+    CAT(1,
             BasicMovementType.LINEAL_LEFT_ONE_STEP,
             BasicMovementType.LINEAL_RIGHT_ONE_STEP,
             BasicMovementType.LINEAL_FORWARD_ONE_STEP,
             BasicMovementType.LINEAL_BACKWARD_ONE_STEP
     ),
-    RABBIT(
+    RABBIT(0,
             BasicMovementType.LINEAL_LEFT_ONE_STEP,
             BasicMovementType.LINEAL_RIGHT_ONE_STEP,
             BasicMovementType.LINEAL_FORWARD_ONE_STEP
     );
 
     private final List<MovementType> availableMovementTypes;
+    private final int relativeValue;
 
-    private PieceType(MovementType... movementTypes) {
+    private PieceType(int value, MovementType... movementTypes) {
         this.availableMovementTypes = Arrays.asList(movementTypes);
+        this.relativeValue = value;
     }
 
     public Piece withColor(Color color) {

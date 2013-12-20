@@ -43,6 +43,10 @@ public class MovementLines implements Iterable<MovementLine> {
     public List<MovementLine> getElephantFlank() {
         return getPieceFlank(PieceType.ELEPHANT);
     }
+    
+    public List<MovementLine> getRabbitFlank() {
+        return getPieceFlank(PieceType.RABBIT);
+    }
 
     private List<MovementLine> getPieceFlank(PieceType pieceType) {
         List<MovementLine> elephantFlank = new ArrayList<>();
