@@ -26,7 +26,7 @@ import com.arimaa.core.PieceNotFoundException;
 public interface SquareContent {
 
     public static final EmptySquare EMPTY_SQUARE = EmptySquare.INSTANCE;
-    public static final TrapSquare TRAP_SQUARE = TrapSquare.INSTANCE;
+    public static final TrapSquare TRAP_SQUARE = TrapSquare.TRAP;
 
     enum EmptySquare implements SquareContent {
 
@@ -50,7 +50,7 @@ public interface SquareContent {
 
     enum TrapSquare implements SquareContent {
 
-        INSTANCE;
+        TRAP;
 
         @Override
         public boolean isEmpty() {
